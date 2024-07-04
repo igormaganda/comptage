@@ -2052,7 +2052,7 @@ $bdd = new Bdd();
 
             // Requête AJAX pour les régions
             $.ajax({
-                url: '/v4/get_regions.php',
+                url: 'get_regions.php',
                 type: 'POST',
                 data: { top_pays: selectedCountries },
                 success: function(response) {
@@ -2065,7 +2065,7 @@ $bdd = new Bdd();
 
             // Requête AJAX pour les départements
             $.ajax({
-                url: '/v4/get_depart.php',
+                url: 'get_depart.php',
                 type: 'POST',
                 data: { top_pays: selectedCountries },
                 success: function(response) {
@@ -2079,7 +2079,7 @@ $bdd = new Bdd();
 
             // Requête AJAX pour les villes
             $.ajax({
-                url: '/v4/get_villes.php',
+                url: 'get_villes.php',
                 type: 'POST',
                 data: { top_pays: selectedCountries },
                 success: function(response) {
@@ -2228,7 +2228,7 @@ $bdd = new Bdd();
 
 
         $.ajax({
-            url: "../api/count.php",
+            url: "http://156.67.25.120/api/count.php",
             type: "post",
             data:JSON.stringify(processFormData()),
             complete: function(xhr, result) {

@@ -4,9 +4,7 @@
 <head>
 
     <!-- jsvectormap css -->
-    <link href="assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css">
 
-    <?php include 'partials/head-css.php'; ?>
 
 </head>
 
@@ -32,7 +30,6 @@
                             </div>
                             <div class="col-md-auto ms-auto">
 
-                                <?php include 'partials/customizer.php'; ?>
 
                             </div>
                         </div>

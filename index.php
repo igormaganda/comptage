@@ -1,9 +1,7 @@
-<?php include 'partials/session.php'; ?>
-<?php include 'partials/main.php'; ?>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <?php includeFileWithVariables('partials/title-meta.php', array('title' => 'Dashboard')); ?>
 
     <!-- jsvectormap css -->
     <link href="assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css">
@@ -17,7 +15,6 @@
     <!-- Begin page -->
     <div id="layout-wrapper">
 
-    <?php include 'partials/menu.php'; ?>
 
         <!-- ============================================================== -->
         <!-- Start right Content here -->
@@ -47,29 +44,12 @@
             </div>
             <!-- End Page-content -->
 
-            <?php include 'partials/footer.php'; ?>
         </div>
         <!-- end main content-->
 
     </div>
     <!-- END layout-wrapper -->
 
-    <?php include 'partials/vendor-scripts.php'; ?>
-
-    <!-- apexcharts -->
-    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
-
-    <!-- Vector map-->
-    <script src="assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
-    <script src="assets/libs/jsvectormap/maps/world-merc.js"></script>
-
-    <script src="assets/libs/list.js/list.min.js"></script>
-
-    <!-- Dashboard init -->
-    <script src="assets/js/pages/dashboard-ecommerce.init.js"></script>
-
-    <!-- App js -->
-    <script src="assets/js/app.js"></script>
 </body>
 
 </html>

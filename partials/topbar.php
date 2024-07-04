@@ -5,6 +5,8 @@
     } else {
         require_once ('assets/lang-php/en.php');
     }
+
+    var_dump($pathTest);
 ?>
 <div class="menu-wrapper">
     <header id="page-topbar">

@@ -14,23 +14,7 @@
                 <div class="d-flex" id="header-logo">
                     <!-- LOGO -->
                     <div class="navbar-brand-box horizontal-logo">
-                        <a href="index.php" class="logo logo-dark">
-                            <span class="logo-sm">
-                                <img src="/<?php echo ROOT_PATH; ?>/assets/images/MGD.png" alt="" height="22">
-                            </span>
-                            <span class="logo-lg">
-                                <img src="/<?php echo ROOT_PATH; ?>/assets/images/MGD.png" alt="" height="22">
-                            </span>
-                        </a>
-    
-                        <a href="index.php" class="logo logo-light">
-                            <span class="logo-sm">
-                                <img src="/<?php echo ROOT_PATH; ?>/assets/images/MGD.png" alt="" height="22">
-                            </span>
-                            <span class="logo-lg">
-                                <img src="/<?php echo ROOT_PATH; ?>/assets/images/MGD.png" alt="" height="22">
-                            </span>
-                        </a>
+                     
                     </div>
     
                     <button type="button"
@@ -48,23 +32,7 @@
                 <div class="app-menu navbar-menu mx-auto opacity-0">
                     <!-- LOGO -->
                     <div class="navbar-brand-box vertical-logo">
-                        <a href="index" class="logo logo-dark">
-                            <span class="logo-sm">
-                                <img src="/<?php echo ROOT_PATH; ?>/assets/images/MGD.png" alt="" height="22">
-                            </span>
-                            <span class="logo-lg">
-                                <img src="/<?php echo ROOT_PATH; ?>/assets/images/MGD.png" alt="" height="22">
-                            </span>
-                        </a>
-
-                        <a href="index" class="logo logo-light">
-                            <span class="logo-sm">
-                                <img src="/<?php echo ROOT_PATH; ?>/assets/images/MGD.png" alt="" height="22">
-                            </span>
-                            <span class="logo-lg">
-                                <img src="/<?php echo ROOT_PATH; ?>/assets/images/MGD.png" alt="" height="22">
-                            </span>
-                        </a>
+                       
                     </div>
                     <div id="scrollbar">
  <!--                       <ul class="navbar-nav" id="navbar-nav">

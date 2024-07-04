@@ -1,4 +1,4 @@
-<?php define('ROOT_PATH', __DIR__); 
+<?php /*define('ROOT_PATH', __DIR__); */
 ?>
 <?php include 'partials/main.php'; ?>
 
@@ -1901,6 +1901,755 @@ $bdd = new Bdd();
 <script src="assets/libs/@tarekraafat/autocomplete.js/autoComplete.min.js"></script>
 <script src="assets/libs/multi.js/multi.min.js"></script>
 
+
+
+<script >
+
+    $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+        // $(document).tooltip();
+        $(".cpm").hide();
+        $(".remise").html("Remise : 0%");
+    });
+    // Fonction pour récupérer les régions en fonction des pays sélectionnés
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+            const paysInputs = document.querySelectorAll('.pays-input');
+            const regionsSelect = document.getElementById('regionsSelect');
+
+            function updateURL(selectedPays) {
+                const currentUrl = new URL(window.location.href);
+                if (selectedPays.length > 0) {
+                    currentUrl.searchParams.set('selectedPays', selectedPays.join(','));
+                } else {
+                    currentUrl.searchParams.delete('selectedPays');
+                }
+                window.history.pushState({}, '', currentUrl);
+                handleURLChange(); // Call this to immediately update regions
+            }
+
+            function handleURLChange() {
+                const currentUrl = new URL(window.location.href);
+                const selectedPays = currentUrl.searchParams.get('selectedPays');
+                if (selectedPays) {
+                    const selectedPaysArray = selectedPays.split(',');
+                    fetchRegions(selectedPaysArray);
+                } else {
+                    regionsSelect.innerHTML = ''; // Clear regions if no country is selected
+                }
+            }
+
+            function fetchRegions(selectedPays) {
+                // Remplacez cette partie avec votre requête pour récupérer les régions
+                // Par exemple, une requête AJAX
+                // Pour cette démo, nous allons simuler les résultats
+
+                const regions = {
+                    France: ['Île-de-France', 'Provence-Alpes-Côte d\'Azur'],
+                    Allemagne: ['Bavière', 'Saxe']
+                };
+
+                regionsSelect.innerHTML = ''; // Clear current options
+
+                selectedPays.forEach(pays => {
+                    if (regions[pays]) {
+                        regions[pays].forEach(region => {
+                            const option = document.createElement('option');
+                            option.value = region;
+                            option.text = region;
+                            regionsSelect.appendChild(option);
+                        });
+                    }
+                });
+            }
+
+            paysInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    const selectedPays = Array.from(document.querySelectorAll('.pays-checkbox:checked')).map(checkbox => checkbox.value)
+                        .concat(Array.from(document.querySelectorAll('#paysSelect option:checked')).map(option => option.value))
+                        .concat(document.getElementById('paysInput').value.trim() ? [document.getElementById('paysInput').value.trim()] : [])
+                        .filter((value, index, self) => self.indexOf(value) === index); // Remove duplicates
+                    updateURL(selectedPays);
+                });
+            });
+
+            handleURLChange(); // Call initially to load regions based on URL
+
+            window.addEventListener('popstate', handleURLChange);
+        });
+
+
+    var form_search_db = document.querySelector("#form_search_db");
+
+    form_search_db.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var search_name = document.getElementById('search_name').value;
+
+        if(search_name.trim() === "") {
+            var msg = "Merci de donner un nom à votre recherche.";
+            Toastify({
+                text: msg,
+                duration: 3000,
+                newWindow: true,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "center", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                className: "info",
+                style: {
+                    background: "linear-gradient(to right, #FF5F6D, #FFC371)", // Dégradé de rouge à jaune
+                }
+            }).showToast();
+
+            //alert(msg);
+        } else {
+            form_search_db.submit();
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+    // Fonction pour mettre à jour le <select> avec Choices.js
+        function updateSelect(selectId, response) {
+            const selectElement = document.getElementById(selectId);
+            selectElement.innerHTML = response;
+            new Choices(selectElement, {
+                removeItemButton: true,
+                placeholderValue: 'Sélectionnez',
+                allowHTML: true
+            });
+        }
+
+    // Supprimer les événements change existants
+    document.querySelectorAll('input[name="top_pays[]"]').forEach(function(checkbox) {
+        checkbox.removeEventListener('change', function() {});
+    });
+
+    // Ajouter les événements change pour récupérer les régions, départements et villes
+    let selectedCountries = [];
+
+    document.querySelectorAll('input[name="top_pays[]"]').forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            const checked = checkbox.checked;
+            const countryValue = checkbox.value;
+
+            if (checked) {
+                selectedCountries.push(countryValue);
+            } else {
+                selectedCountries = selectedCountries.filter(function(country) {
+                    return country !== countryValue;
+                });
+            }
+
+            // Requête AJAX pour les régions
+            $.ajax({
+                url: 'get_regions.php',
+                type: 'POST',
+                data: { top_pays: selectedCountries },
+                success: function(response) {
+                    updateSelect('select_multiselect_region', response);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error("Erreur Ajax:", textStatus, errorThrown);
+                }
+            });
+
+            // Requête AJAX pour les départements
+            $.ajax({
+                url: 'get_depart.php',
+                type: 'POST',
+                data: { top_pays: selectedCountries },
+                success: function(response) {
+                    console.log("dep " + response);
+                    updateSelect('select_multiselect_departement', response);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error("Erreur Ajax:", textStatus, errorThrown);
+                }
+            });
+
+            // Requête AJAX pour les villes
+            $.ajax({
+                url: 'get_villes.php',
+                type: 'POST',
+                data: { top_pays: selectedCountries },
+                success: function(response) {
+                    console.log("villes " + response);
+                    updateSelect('select_multiselect_ville', response);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error("Erreur Ajax:", textStatus, errorThrown);
+                }
+            });
+        });
+    });
+ });
+
+
+    
+
+    var inclure_sexes = document.querySelector("#formradioRight5");
+    var exclure_sexes = document.querySelector("#formradioRight5");
+    //var replace = document.querySelector("#choices-single-groups");
+
+    //replace.html("ssss");
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Sélectionner tous les éléments input et leur ajouter un événement change
+        var inputs = document.querySelectorAll('input[type=file], textarea, input[type=date],input[type=checkbox], input[type=hidden], input[type=text], input[type=number], input[type=radio], select');
+
+       
+        
+        inputs.forEach(function(input) {
+            input.addEventListener("change", function() {
+                // Code à exécuter lorsque la valeur d'un élément input change
+                ajaxRequest()
+            });
+        });
+    });
+
+
+
+
+    //fonction permettant de bien formater les données a envoyer
+    function processFormData() {
+        const formData = $("#form_search_db").serializeArray();
+        const newJsonObject = {};
+        for (const item of formData) {
+            if (item.name && item.value.trim() !== "") {
+                if (item.name.endsWith('[]')) {
+                    // Cas des champs de type "checkbox"
+                    const fieldName = item.name.slice(0, -2); // Supprime les crochets "[]" du nom du champ
+                    if (!newJsonObject[fieldName]) {
+                        newJsonObject[fieldName] = [];
+                    }
+                    newJsonObject[fieldName].push(item.value);
+                } else {
+                    // Cas des autres champs
+                    newJsonObject[item.name] = item.value;
+                }
+            }
+        }
+        /*for (const item of formData) {
+            if (item.name && item.value.trim() !== "") {
+            newJsonObject[item.name] = item.value;
+            }
+        }*/
+        return newJsonObject;
+    }
+
+    function ajaxRequest() {
+
+        const CPM_EMAIL_PRICE = 15;
+        const CPM_MOBILE_PRICE = 20;
+        const CPM_ADRESSE_PRICE = 22;
+        var pourcentage_ajout = 0.05;
+
+        const CPM_DEFAULT = 1000;
+        const message = "Soit un CPM de ";
+        //console.log(data);
+        //  url: "http://207.180.204.157/api/count.php",
+
+
+        $.ajax({
+            url: "http://156.67.25.120/api/count.php",
+            type: "post",
+            data:JSON.stringify(processFormData()),
+            complete: function(xhr, result) {
+
+                console.log(JSON.stringify(processFormData()));
+                console.log(xhr.responseText);
+                var print = JSON.parse(xhr.responseText);
+                console.log(print)
+                var comptage_finale = print.total;
+                console.log(print.total);
+
+                // Initialisation du coût total des CPM
+                var cout_total = 0;
+                var cpm_total = 0;
+
+                // Additionner les prix CPM en fonction des cases cochées
+                if ($("#inlineswitch").is(":checked")) {
+                    cout_total += CPM_EMAIL_PRICE * (comptage_finale / CPM_DEFAULT);
+                    cpm_total += CPM_EMAIL_PRICE;
+                }
+                if ($("#inlineswitch1").is(":checked")) {
+                    cout_total += CPM_MOBILE_PRICE * (comptage_finale / CPM_DEFAULT);
+                    cpm_total += CPM_MOBILE_PRICE;
+                }
+                if ($("#inlineswitchdisabled").is(":checked")) {
+                    cout_total += CPM_ADRESSE_PRICE * (comptage_finale / CPM_DEFAULT);
+                    cpm_total += CPM_ADRESSE_PRICE;
+                }
+
+
+                var remise = pourcentage_ajout * 100; // Convertir la remise en pourcentage
+                var cout_avec_remise = cout_total * (1 - pourcentage_ajout) * (1 + pourcentage_ajout);
+
+                // Mise à jour des éléments HTML
+                $(".odometer").html(comptage_finale);
+              //  $(".data").html(cout_total.toFixed(2) + "€ HT");
+                $(".total_prices").html(cout_avec_remise.toFixed(2) + "€ HT");
+
+
+                if (pourcentage_ajout > 0) {
+                    $(".data").html(cout_total.toFixed(2) + "€ HT");
+                    //  $(".data").addClass("strikethrough");
+                    $(".remise").html("Remise : " + remise + "%").fadeIn();
+                } else {
+                    $(".data").html(cout_total.toFixed(2) + "€ HT");
+                    // $(".data").removeClass("strikethrough");
+                    $(".remise").html("Remise : 0%");
+                }
+
+                $(".cpm").html(message + cpm_total + "€ HT").fadeIn();
+            }
+
+        });
+    }
+    // upload des fichiers de villes
+    var villes_input = document.querySelector("#villes_input")
+     villes_input.addEventListener("change", function(){
+        // FormData permet d'envoyer des fichiers avec AJAX
+        const formData12 = new FormData();
+
+        // Récupérer le fichier sélectionné
+        const file = $(this)[0].files[0];
+
+        // Ajouter le fichier au FormData
+        formData12.append('villes_input', file);
+        $.ajax ({
+            url: "villes_btob_csv.php",
+            type: "post",
+            data: formData12,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                // Parse the JSON response
+                try {
+                    const villes = JSON.parse(response);
+                    const input = $('<input type="hidden" name="villes_input" value="' + villes + '">');
+                    $("#form_search_db").append(input);
+                    //console.log(lignes)
+                    /*for (const ligne of lignes) {
+                    console.log(ligne[0])	
+                    
+                    // Un input de type hidden pour chaque
+                    const input = $('<input type="hidden" name="lignes" value="' + lignes + '">');
+                    $("#form_search_db").append(input);
+                    }*/
+
+                    // Appel a la fonction Ajax
+                    ajaxRequest();
+                } catch (error) {
+                    console.error("Error parsing JSON response:", error);
+                }
+            },
+
+            error: function(xhr, status, errorThrown) {
+                console.error("Error sending file:", xhr.statusText);
+            }
+        });
+    });
+    
+    //upload des fichiers forme juridique
+    var input_form_juridique = document.querySelector("#input_form_juridique");
+        input_form_juridique.addEventListener("change", function(){
+        // FormData permet d'envoyer des fichiers avec AJAX
+        const formData11 = new FormData();
+
+        // Récupérer le fichier sélectionné
+        const file = $(this)[0].files[0];
+
+        // Ajouter le fichier au FormData
+        formData11.append('input_form_juridique', file);
+        $.ajax ({
+            url: "form_juridique_csv.php",
+            type: "post",
+            data: formData11,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                // Parse the JSON response
+                try {
+                    const form_juridique = JSON.parse(response);
+                    const input = $('<input type="hidden" name="form_juridique" value="' + form_juridique + '">');
+                    $("#form_search_db").append(input);
+                    ajaxRequest();
+                } catch (error) {
+                    console.error("Error parsing JSON response:", error);
+                }
+            },
+
+            error: function(xhr, status, errorThrown) {
+                console.error("Error sending file:", xhr.statusText);
+            }
+        });
+    });
+
+
+    //upload des fichiers depatements
+    var input_dep2 = document.querySelector("#input_dep");
+        input_dep2.addEventListener("change", function(){
+        // FormData permet d'envoyer des fichiers avec AJAX
+        const formData10 = new FormData();
+
+        // Récupérer le fichier sélectionné
+        const file = $(this)[0].files[0];
+
+        // Ajouter le fichier au FormData
+        formData10.append('input_dep', file);
+        $.ajax ({
+            url: "depbtob_csv.php",
+            type: "post",
+            data: formData10,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                // Parse the JSON response
+                try {
+                    const dep = JSON.parse(response);
+                    const input = $('<input type="hidden" name="input_dep" value="' + dep + '">');
+                    $("#form_search_db").append(input);
+                    ajaxRequest();
+                } catch (error) {
+                    console.error("Error parsing JSON response:", error);
+                }
+            },
+
+            error: function(xhr, status, errorThrown) {
+                console.error("Error sending file:", xhr.statusText);
+            }
+        });
+    });
+
+
+    //upload des fichiers de regions
+    var input_regions = document.querySelector("#input_regions");
+        input_regions.addEventListener("change", function(){
+        // FormData permet d'envoyer des fichiers avec AJAX
+        const formData9 = new FormData();
+
+        // Récupérer le fichier sélectionné
+        const file = $(this)[0].files[0];
+
+        // Ajouter le fichier au FormData
+        formData9.append('input_regions', file);
+        $.ajax ({
+            url: "region_btob_csv.php",
+            type: "post",
+            data: formData9,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                // Parse the JSON response
+                try {
+                    const region = JSON.parse(response);
+                    const input = $('<input type="hidden" name="input_regions" value="' + region + '">');
+                    $("#form_search_db").append(input);
+                    ajaxRequest();
+                } catch (error) {
+                    console.error("Error parsing JSON response:", error);
+                }
+            },
+
+            error: function(xhr, status, errorThrown) {
+                console.error("Error sending file:", xhr.statusText);
+            }
+        });
+    });
+    
+    //upload des fichiers conventions collectives
+    var input_conv_collec = document.querySelector("#input_conv_collec");
+        input_conv_collec.addEventListener("change", function(){
+        // FormData permet d'envoyer des fichiers avec AJAX
+        const formData8 = new FormData();
+
+        // Récupérer le fichier sélectionné
+        const file = $(this)[0].files[0];
+
+        // Ajouter le fichier au FormData
+        formData8.append('input_conv_collec', file);
+        $.ajax ({
+            url: "conventions_collective_csv.php",
+            type: "post",
+            data: formData8,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                // Parse the JSON response
+                try {
+                    const conv_collective = JSON.parse(response);
+                    const input = $('<input type="hidden" name="input_conv_collec" value="' + conv_collective + '">');
+                    $("#form_search_db").append(input);
+                    ajaxRequest();
+                } catch (error) {
+                    console.error("Error parsing JSON response:", error);
+                }
+            },
+
+            error: function(xhr, status, errorThrown) {
+                console.error("Error sending file:", xhr.statusText);
+            }
+        });
+    });
+    
+
+    //upload des fichiers des fonctions
+    var input_fonctions = document.querySelector("#inputfile_fonctions");
+        input_fonctions.addEventListener("change", function(){
+        // FormData permet d'envoyer des fichiers avec AJAX
+        const formData7 = new FormData();
+
+        // Récupérer le fichier sélectionné
+        const file = $(this)[0].files[0];
+
+        // Ajouter le fichier au FormData
+        formData7.append('inputfile_fonctions', file);
+        $.ajax ({
+            url: "fonctions_csv.php",
+            type: "post",
+            data: formData7,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                // Parse the JSON response
+                try {
+                    const fonctions = JSON.parse(response);
+                    const input = $('<input type="hidden" name="inputfile_fonctions" value="' + fonctions + '">');
+                    $("#form_search_db").append(input);
+                    ajaxRequest();
+                } catch (error) {
+                    console.error("Error parsing JSON response:", error);
+                }
+            },
+
+            error: function(xhr, status, errorThrown) {
+                console.error("Error sending file:", xhr.statusText);
+            }
+        });
+    });
+    
+    //upload des fichiers de naf
+    var input_naf = document.querySelector("#input_naf");
+        input_naf.addEventListener("change", function(){
+        // FormData permet d'envoyer des fichiers avec AJAX
+        const formData6 = new FormData();
+
+        // Récupérer le fichier sélectionné
+        const file = $(this)[0].files[0];
+
+        // Ajouter le fichier au FormData
+        formData6.append('input_naf', file);
+        $.ajax ({
+            url: "naf_csv.php",
+            type: "post",
+            data: formData6,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                // Parse the JSON response
+                try {
+                    const nafs = JSON.parse(response);
+                    const input = $('<input type="hidden" name="input_naf" value="' + nafs + '">');
+                    $("#form_search_db").append(input);
+                    ajaxRequest();
+                } catch (error) {
+                    console.error("Error parsing JSON response:", error);
+                }
+            },
+
+            error: function(xhr, status, errorThrown) {
+                console.error("Error sending file:", xhr.statusText);
+            }
+        });
+    });
+
+
+    //upload des fichiers de departements
+
+    
+
+    //upload des fichiers codes postales
+    var inputfile = document.querySelector("#inputfile_cp");
+        inputfile.addEventListener("change", function(e){
+        e.preventDefault();
+        // FormData permet d'envoyer des fichiers avec AJAX
+        const formData = new FormData();
+
+        // Récupérer le fichier sélectionné
+        const file = $(this)[0].files[0];
+
+        // Ajouter le fichier au FormData
+        formData.append('inputfile_cp', file);
+        $.ajax ({
+            url: "cp_csv.php",
+            type: "post",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                // Parse the JSON response
+                try {
+                    const cp = JSON.parse(response);
+                    const input = $('<input type="hidden" name="inputfile_cp" value="' + cp + '">');
+                    $("#form_search_db").append(input);
+                    //console.log(lignes)
+                    /*for (const ligne of lignes) {
+                    console.log(ligne[0])	
+                    }*/
+
+                    // Appel a la fonction Ajax
+                    ajaxRequest();
+                } catch (error) {
+                    console.error("Error parsing JSON response:", error);
+                }
+            },
+
+            error: function(xhr, status, errorThrown) {
+                console.error("Error sending file:", xhr.statusText);
+            }
+        });
+    });
+    
+    
+    // les donnés de mon fichier csv pays importés 
+    var input_pays = document.querySelector("#input_pays");
+    input_pays.addEventListener("change", function(e){
+        e.preventDefault();
+        // FormData permet d'envoyer des fichiers avec AJAX
+        const formData2 = new FormData();
+
+        // Récupérer le fichier sélectionné
+        const file = $(this)[0].files[0];
+        //console.log(file);
+        // Ajouter le fichier au FormData
+        formData2.append('input_pays', file);
+        $.ajax ({
+            url: "pays_csv.php",
+            type: "post",
+            data: formData2,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                // Parse the JSON response
+                try {
+                    const pays = JSON.parse(response);
+                    const input = $('<input type="hidden" name="input_pays" value="' + pays + '">');
+                    $("#form_search_db").append(input);
+                    //console.log(response)
+                    /*for (const ligne of pays) {
+                    console.log(ligne)
+                    }*/
+
+                    // Appel a la fonction Ajax
+                    ajaxRequest();
+                } catch (error) {
+                    console.error("Error parsing JSON response:", error);
+                }
+            },
+
+            error: function(xhr, status, errorThrown) {
+                console.error("Error sending file:", xhr.statusText);
+            }
+        });
+    });
+
+    // upload des fichiers de departement
+    var input_dep = document.querySelector("#input_dep")
+    input_dep.addEventListener("change", function(){
+        // FormData permet d'envoyer des fichiers avec AJAX
+        const formData4 = new FormData();
+
+        // Récupérer le fichier sélectionné
+        const file = $(this)[0].files[0];
+
+        // Ajouter le fichier au FormData
+        formData4.append('input_dep', file);
+        $.ajax ({
+            url: "dep_csv.php",
+            type: "post",
+            data: formData4,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                // Parse the JSON response
+                try {
+                    const dep = JSON.parse(response);
+                    const input = $('<input type="hidden" name="input_dep" value="' + dep + '">');
+                    $("#form_search_db").append(input);
+                    //console.log(lignes)
+                    /*for (const ligne of lignes) {
+                    console.log(ligne[0])	
+                    
+                    // Un input de type hidden pour chaque
+                    const input = $('<input type="hidden" name="lignes" value="' + lignes + '">');
+                    $("#form_search_db").append(input);
+                    }*/
+
+                    // Appel a la fonction Ajax
+                    ajaxRequest();
+                } catch (error) {
+                    console.error("Error parsing JSON response:", error);
+                }
+            },
+
+            error: function(xhr, status, errorThrown) {
+                console.error("Error sending file:", xhr.statusText);
+            }
+        });
+    });
+
+    // upload des fichiers de region
+    var input_region = document.querySelector("#input_region")
+    input_region.addEventListener("change", function(e){
+        e.preventDefault()
+        // FormData permet d'envoyer des fichiers avec AJAX
+        const formData5 = new FormData();
+
+        // Récupérer le fichier sélectionné
+        const file = $(this)[0].files[0];
+
+        // Ajouter le fichier au FormData
+        formData5.append('input_region', file);
+        $.ajax ({
+            url: "region_csv.php",
+            type: "post",
+            data: formData5,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                // Parse the JSON response
+                try {
+                    const region = JSON.parse(response);
+                    const input = $('<input type="hidden" name="input_region" value="' + region + '">');
+                    $("#form_search_db").append(input);
+                    //console.log(lignes)
+                    /*for (const ligne of lignes) {
+                    console.log(ligne[0])	
+                    
+                    // Un input de type hidden pour chaque
+                    const input = $('<input type="hidden" name="lignes" value="' + lignes + '">');
+                    $("#form_search_db").append(input);
+                    }*/
+
+                    // Appel a la fonction Ajax
+                    ajaxRequest();
+                } catch (error) {
+                    console.error("Error parsing JSON response:", error);
+                }
+            },
+
+            error: function(xhr, status, errorThrown) {
+                console.error("Error sending file:", xhr.statusText);
+            }
+        });
+    });
+
+
+
+</script>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js" integrity="sha512-v3fZyWIk7kh9yGNQZf1SnSjIxjAKsYbg6UQ+B+QxAZqJQLrN3jMjrdNwcxV6tis6S0s1xyVDZrDz9UoRLfRpWw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

@@ -6,7 +6,6 @@
         require_once ('assets/lang-php/en.php');
     }
 
-    var_dump($pathTest);
 ?>
 <div class="menu-wrapper">
     <header id="page-topbar">
@@ -17,19 +16,19 @@
                     <div class="navbar-brand-box horizontal-logo">
                         <a href="index.php" class="logo logo-dark">
                             <span class="logo-sm">
-                                <img src="/<?php echo $pathTest; ?>/assets/images/MGD.png" alt="" height="22">
+                                <img src="/<?php echo ROOT_PATH; ?>/assets/images/MGD.png" alt="" height="22">
                             </span>
                             <span class="logo-lg">
-                                <img src="/<?php echo $pathTest; ?>/assets/images/MGD.png" alt="" height="22">
+                                <img src="/<?php echo ROOT_PATH; ?>/assets/images/MGD.png" alt="" height="22">
                             </span>
                         </a>
     
                         <a href="index.php" class="logo logo-light">
                             <span class="logo-sm">
-                                <img src="/<?php echo $pathTest; ?>/assets/images/MGD.png" alt="" height="22">
+                                <img src="/<?php echo ROOT_PATH; ?>/assets/images/MGD.png" alt="" height="22">
                             </span>
                             <span class="logo-lg">
-                                <img src="/<?php echo $pathTest; ?>/assets/images/MGD.png" alt="" height="22">
+                                <img src="/<?php echo ROOT_PATH; ?>/assets/images/MGD.png" alt="" height="22">
                             </span>
                         </a>
                     </div>
@@ -51,19 +50,19 @@
                     <div class="navbar-brand-box vertical-logo">
                         <a href="index" class="logo logo-dark">
                             <span class="logo-sm">
-                                <img src="/<?php echo $pathTest; ?>/assets/images/MGD.png" alt="" height="22">
+                                <img src="/<?php echo ROOT_PATH; ?>/assets/images/MGD.png" alt="" height="22">
                             </span>
                             <span class="logo-lg">
-                                <img src="/<?php echo $pathTest; ?>/assets/images/MGD.png" alt="" height="22">
+                                <img src="/<?php echo ROOT_PATH; ?>/assets/images/MGD.png" alt="" height="22">
                             </span>
                         </a>
 
                         <a href="index" class="logo logo-light">
                             <span class="logo-sm">
-                                <img src="/<?php echo $pathTest; ?>/assets/images/MGD.png" alt="" height="22">
+                                <img src="/<?php echo ROOT_PATH; ?>/assets/images/MGD.png" alt="" height="22">
                             </span>
                             <span class="logo-lg">
-                                <img src="/<?php echo $pathTest; ?>/assets/images/MGD.png" alt="" height="22">
+                                <img src="/<?php echo ROOT_PATH; ?>/assets/images/MGD.png" alt="" height="22">
                             </span>
                         </a>
                     </div>
@@ -84,7 +83,7 @@
                                         <div class="collapse menu-dropdown" id="sideData">
                                             <ul class="nav nav-sm flex-column">
                                                 <li class="nav-item">
-                                                    <a href="/<?php echo $pathTest; ?>/blacklist.php" class="nav-link" role="button"> Blacklist</a>
+                                                    <a href="/<?php echo ROOT_PATH; ?>/blacklist.php" class="nav-link" role="button"> Blacklist</a>
                                                 </li>
                                                
                                             </ul>
@@ -95,7 +94,7 @@
                                         <div class="collapse menu-dropdown" id="sideOptions">
                                             <ul class="nav nav-sm flex-column">
                                                 <li class="nav-item">
-                                                    <a href="/<?php echo $pathTest; ?>/exclusion.php" class="nav-link"> Réglages </a>
+                                                    <a href="/<?php echo ROOT_PATH; ?>/exclusion.php" class="nav-link"> Réglages </a>
                                                 </li>
                                                
                                             </ul>
@@ -121,18 +120,18 @@
                                             <div class="collapse menu-dropdown" id="sideImport">
                                                 <ul class="nav nav-sm flex-column">
                                                     <li class="nav-item">
-                                                        <a href="/<?php echo $pathTest; ?>/import.php" class="nav-link" role="button">Email</a>
+                                                        <a href="/<?php echo ROOT_PATH; ?>/import.php" class="nav-link" role="button">Email</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a href="/<?php echo $pathTest; ?>/enrichir.php" class="nav-link" role="button">Enrichissement</a>
+                                                        <a href="/<?php echo ROOT_PATH; ?>/enrichir.php" class="nav-link" role="button">Enrichissement</a>
                                                     </li>
                                                    
                                                     <li class="nav-item">
-                                                        <a href="/<?php echo $pathTest; ?>/import_mobile.php" class="nav-link" role="button">Mobile</a>
+                                                        <a href="/<?php echo ROOT_PATH; ?>/import_mobile.php" class="nav-link" role="button">Mobile</a>
                                                     </li>
                                                     
                                                     <li class="nav-item">
-                                                        <a href="/<?php echo $pathTest; ?>/domaine.php" class="nav-link" role="button">Split-Domaine</a>
+                                                        <a href="/<?php echo ROOT_PATH; ?>/domaine.php" class="nav-link" role="button">Split-Domaine</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -147,11 +146,11 @@
                                                         <div class="collapse menu-dropdown" id="searchBtob">
                                                             <ul class="nav nav-sm flex-column">
                                                                 <li class="nav-item">
-                                                                    <a href="/<?php echo $pathTest; ?>/search_b2b.php" class="nav-link"> Recherche
+                                                                    <a href="/<?php echo ROOT_PATH; ?>/search_b2b.php" class="nav-link"> Recherche
                                                                     </a>
                                                                 </li>
                                                                 <li class="nav-item">
-                                                                    <a href="/<?php echo $pathTest; ?>/list_b2b.php" class="nav-link"> Liste des recherches
+                                                                    <a href="/<?php echo ROOT_PATH; ?>/list_b2b.php" class="nav-link"> Liste des recherches
                                                                     </a>
                                                                 </li>
                                                             </ul>
@@ -163,11 +162,11 @@
                                                         <div class="collapse menu-dropdown" id="searchBtoc">
                                                             <ul class="nav nav-sm flex-column">
                                                                 <li class="nav-item">
-                                                                    <a href="/<?php echo $pathTest; ?>/search_b2c.php" class="nav-link"> Recherche
+                                                                    <a href="/<?php echo ROOT_PATH; ?>/search_b2c.php" class="nav-link"> Recherche
                                                                     </a>
                                                                 </li>
                                                                 <li class="nav-item">
-                                                                    <a href="/<?php echo $pathTest; ?>/list_b2c.php" class="nav-link">Liste des recherches
+                                                                    <a href="/<?php echo ROOT_PATH; ?>/list_b2c.php" class="nav-link">Liste des recherches
                                                                     </a>
                                                                 </li>
                                                             </ul>
@@ -194,13 +193,13 @@
                                             <div class="collapse menu-dropdown" id="sideCompagne">
                                                 <ul class="nav nav-sm flex-column">
                                                     <li class="nav-item">
-                                                        <a href="/<?php echo $pathTest; ?>/brouillon.php" class="nav-link" role="button">Brouillons</a>
+                                                        <a href="/<?php echo ROOT_PATH; ?>/brouillon.php" class="nav-link" role="button">Brouillons</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a href="/<?php echo $pathTest; ?>/campagne.php" class="nav-link" role="button"> Créer un envoi</a>
+                                                        <a href="/<?php echo ROOT_PATH; ?>/campagne.php" class="nav-link" role="button"> Créer un envoi</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a href="/<?php echo $pathTest; ?>/campagne_b.php" class="nav-link" role="button"> Liste des envoies</a>
+                                                        <a href="/<?php echo ROOT_PATH; ?>/campagne_b.php" class="nav-link" role="button"> Liste des envoies</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -210,25 +209,25 @@
                                             <div class="collapse menu-dropdown" id="sidemManagement">
                                                 <ul class="nav nav-sm flex-column">
                                                     <li class="nav-item">
-                                                        <a href="/<?php echo $pathTest; ?>/partenaires.php" class="nav-link">Partenaires</a>
+                                                        <a href="/<?php echo ROOT_PATH; ?>/partenaires.php" class="nav-link">Partenaires</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a href="/<?php echo $pathTest; ?>/programmes.php" class="nav-link" >Programmes </a>
+                                                        <a href="/<?php echo ROOT_PATH; ?>/programmes.php" class="nav-link" >Programmes </a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a href="/<?php echo $pathTest; ?>/domaines.php" class="nav-link"> Domaines </a>
+                                                        <a href="/<?php echo ROOT_PATH; ?>/domaines.php" class="nav-link"> Domaines </a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a href="/<?php echo $pathTest; ?>/routes.php" class="nav-link"> Routes</a>
+                                                        <a href="/<?php echo ROOT_PATH; ?>/routes.php" class="nav-link"> Routes</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a href="/<?php echo $pathTest; ?>/tdpf.php" class="nav-link">Volume</a>
+                                                        <a href="/<?php echo ROOT_PATH; ?>/tdpf.php" class="nav-link">Volume</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a href="/<?php echo $pathTest; ?>/thematiques.php" class="nav-link">Thématique</a>
+                                                        <a href="/<?php echo ROOT_PATH; ?>/thematiques.php" class="nav-link">Thématique</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a href="/<?php echo $pathTest; ?>/assoaide.php" class="nav-link"> Partenaires (asso-aide) </a>
+                                                        <a href="/<?php echo ROOT_PATH; ?>/assoaide.php" class="nav-link"> Partenaires (asso-aide) </a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -245,23 +244,23 @@
                                 <div class="collapse menu-dropdown" id="sideStat">
                                     <ul class="nav nav-sm flex-column">
                                         <li class="nav-item">
-                                            <a href="/<?php echo $pathTest; ?>/presentation.php" class="nav-link" role="button"> Données </a>
+                                            <a href="/<?php echo ROOT_PATH; ?>/presentation.php" class="nav-link" role="button"> Données </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="/<?php echo $pathTest; ?>/envois.php" class="nav-link" role="button"> Envoi</a>
+                                            <a href="/<?php echo ROOT_PATH; ?>/envois.php" class="nav-link" role="button"> Envoi</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="/<?php echo $pathTest; ?>/stats.php" class="nav-link" role="button">Statistiques</a>
+                                            <a href="/<?php echo ROOT_PATH; ?>/stats.php" class="nav-link" role="button">Statistiques</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="/<?php echo $pathTest; ?>/ediware_cmp.php" class="nav-link" role="button"> Ediware</a>
+                                            <a href="/<?php echo ROOT_PATH; ?>/ediware_cmp.php" class="nav-link" role="button"> Ediware</a>
                                         </li>
                                        
                                         <li class="nav-item">
-                                            <a href="/<?php echo $pathTest; ?>/statistic_nettoyage.php" class="nav-link" role="button">Nettoyage</a>
+                                            <a href="/<?php echo ROOT_PATH; ?>/statistic_nettoyage.php" class="nav-link" role="button">Nettoyage</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="/<?php echo $pathTest; ?>/statistic_envoi.php" class="nav-link" role="button">Envois</a>
+                                            <a href="/<?php echo ROOT_PATH; ?>/statistic_envoi.php" class="nav-link" role="button">Envois</a>
                                         </li>
                                     </ul>
                                 </div>

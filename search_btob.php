@@ -1,4 +1,4 @@
-<?php //include 'partials/session.php'; 
+<?php define('ROOT_PATH', __DIR__); 
 ?>
 <?php include 'partials/main.php'; ?>
 

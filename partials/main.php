@@ -91,7 +91,7 @@ if($isScssconverted){
 		}
 	}
 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/'.$path.'/class/Calc.php');
+	require_once('class/Calc.php');
 ?>
 
 <!doctype html>

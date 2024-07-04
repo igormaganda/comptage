@@ -1,8 +1,8 @@
 <?php include 'partials/session.php'; ?>
 <?php include 'partials/main.php'; ?>
-
+<!DOCTYPE html>
+<html>
 <head>
-
     <?php includeFileWithVariables('partials/title-meta.php', array('title' => 'Dashboard')); ?>
 
     <!-- jsvectormap css -->

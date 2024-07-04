@@ -56,7 +56,7 @@
 					$this->PARAM_mot_passe   ='root';
 */
 
-					$this->PARAM_hote        ='localhost';
+					$this->PARAM_hote        ='156.67.25.120';
 					$this->PARAM_port        ='5432';
 					$this->PARAM_nom_bd      ='datamart';
 					$this->PARAM_utilisateur ='postgres';
@@ -74,7 +74,7 @@
 					break;
 
 				case 10: // BERTRAND
-					$this->PARAM_hote        ='localhost';
+					$this->PARAM_hote        ='156.67.25.120';
 					$this->PARAM_port        ='5432';
 					$this->PARAM_nom_bd      ='datamart_ber';
 					$this->PARAM_utilisateur ='postgres';
@@ -82,7 +82,7 @@
 					break;
 
 				case 100: // ADN
-					$this->PARAM_hote        ='localhost';
+					$this->PARAM_hote        ='156.67.25.120';
 					$this->PARAM_port        ='5432';
 					$this->PARAM_nom_bd      ='datamart_adn';
 					$this->PARAM_utilisateur ='postgres';
@@ -90,7 +90,7 @@
 					break;
 
 				case 2: // Préprod
-					$this->PARAM_hote        ='localhost';
+					$this->PARAM_hote        ='156.67.25.120';
 					$this->PARAM_port        ='5432';
 					$this->PARAM_nom_bd      ='datamart_dev';
 					$this->PARAM_utilisateur ='postgres';
@@ -98,7 +98,7 @@
 					break;
 
 				case 3: // Test
-					$this->PARAM_hote        ='localhost';
+					$this->PARAM_hote        ='156.67.25.120';
 					$this->PARAM_port        ='5432';
 					$this->PARAM_nom_bd      ='datamart_test';
 					$this->PARAM_utilisateur ='postgres';
@@ -106,7 +106,7 @@
 					break;
 
 				case 4: // Nettoyage
-					$this->PARAM_hote        ='localhost';
+					$this->PARAM_hote        ='156.67.25.120';
 					$this->PARAM_port        ='5432';
 					$this->PARAM_nom_bd      ='datamart_test';
 					$this->PARAM_utilisateur ='postgres';

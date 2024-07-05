@@ -672,32 +672,7 @@ $bdd = new Bdd();
                                                 </div>
                                                 <div class="tab-pane" id="arrow-INSEE" role="tabpanel">
                                                     <div class="row g-3">
-                                                        <div class="col-lg-6">
-                                                            <div class="mt-1 mt-lg-0">
-                                                                <p class="text-muted mb-1">Rechercher un ou
-                                                                    plusieurs codes INSEE </p>
-                                                                <select required multiple="multiple" name="favorite_cars" id="multiselect-insee">
-                                                                    <option>Chevrolet</option>
-                                                                    <option>Fiat</option>
-                                                                    <option>Ford</option>
-                                                                    <option>Honda</option>
-                                                                    <option selected>Hyundai</option>
-                                                                    <option>Kia</option>
-                                                                    <option>Mahindra</option>
-                                                                    <option>Maruti</option>
-                                                                    <option>Mitsubishi</option>
-                                                                    <option>MG</option>
-                                                                    <option>Nissan</option>
-                                                                    <option>Renault</option>
-                                                                    <option selected>Skoda</option>
-                                                                    <option selected>Tata</option>
-                                                                    <option selected>Toyato</option>
-                                                                    <option>Volkswagen</option>
-                                                                </select>
-                                                            </div>
-                                                            <br>
-                                                            &nbsp;
-                                                        </div>
+                                                        
                                                         <div class="col-lg-6">
                                                             <div class="mt-1 mb-0 mt-lg-0">
                                                                 <div style="margin-bottom: 10px;">
@@ -746,11 +721,7 @@ $bdd = new Bdd();
                                                                         </optgroup>
                                                                     </select>
                                                                 </div>
-                                                                <div class="mt-0" style="margin-bottom: 10px;">
-                                                                    <p class="text-muted mb-1">Définir les valeurs
-                                                                        limites avec le bouton Supprimer</p>
-                                                                    <input class="form-control" id="choices-text-remove-button" data-choices data-choices-limit="3" data-choices-removeItem type="text" value="Task-1">
-                                                                </div>
+                                                            
                                                                 <div class="" style="margin-bottom: 10px;">
                                                                     <p class="text-muted mb-1">Copier-coller :</p>
                                                                     <div class="form-group">
@@ -799,32 +770,7 @@ $bdd = new Bdd();
                                                 </div>
                                                 <div class="tab-pane" id="arrow-IRIS" role="tabpanel">
                                                     <div class="row g-3">
-                                                        <div class="col-lg-6">
-                                                            <div class="mt-1 mt-lg-0">
-                                                                <p class="text-muted mb-1">Rechercher un ou
-                                                                    plusieurs codes IRIS </p>
-                                                                <select required multiple="multiple" name="favorite_cars" id="multiselect-iris">
-                                                                    <option>Chevrolet</option>
-                                                                    <option>Fiat</option>
-                                                                    <option>Ford</option>
-                                                                    <option>Honda</option>
-                                                                    <option selected>Hyundai</option>
-                                                                    <option>Kia</option>
-                                                                    <option>Mahindra</option>
-                                                                    <option>Maruti</option>
-                                                                    <option>Mitsubishi</option>
-                                                                    <option>MG</option>
-                                                                    <option>Nissan</option>
-                                                                    <option>Renault</option>
-                                                                    <option selected>Skoda</option>
-                                                                    <option selected>Tata</option>
-                                                                    <option selected>Toyato</option>
-                                                                    <option>Volkswagen</option>
-                                                                </select>
-                                                            </div>
-                                                            <br>
-                                                            &nbsp;
-                                                        </div>
+                                                        
                                                         <div class="col-lg-6">
                                                             <div class="mt-1 mb-0 mt-lg-0">
                                                                 <div style="margin-bottom: 10px;">
@@ -873,11 +819,7 @@ $bdd = new Bdd();
                                                                         </optgroup>
                                                                     </select>
                                                                 </div>
-                                                                <div class="mt-0" style="margin-bottom: 10px;">
-                                                                    <p class="text-muted mb-1">Définir les valeurs
-                                                                        limites avec le bouton Supprimer</p>
-                                                                    <input class="form-control" id="choices-text-remove-button" data-choices data-choices-limit="3" data-choices-removeItem type="text" value="Task-1">
-                                                                </div>
+                                                                
                                                                 <div class="" style="margin-bottom: 10px;">
                                                                     <p class="text-muted mb-1">Copier-coller :</p>
                                                                     <div class="form-group">
@@ -2118,59 +2060,6 @@ $bdd = new Bdd();
                                         </div>
                                     </div>
                                 </div>
-                                <!--end col-->
-                                <div class="col-xxl-12 col-lg-6">
-                                    <div class="card card-height-100">
-                                        <div class="card-header align-items-center d-flex">
-                                            <h6 class="card-title mb-0 flex-grow-1">Précédentes recherches</h6>
-                                            <div class="flex-shrink-0">
-                                                <a class="icon-link" href="apps-crypto-transactions.php">
-                                                    Voir tout <i class="bi bi-arrow-right"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <ul class="list-unstyled vstack gap-3 mb-0">
-                                                <?php
-                                                $requete = "SELECT id, name, result, date FROM counter ORDER BY id DESC LIMIT 10";
-                                                $result = $bdd->executeQueryRequete($requete, 1);
-
-                                                while( $search = $result->fetch() ) {
-
-                                                    ?>
-                                                    <li class="d-flex align-items-center gap-2 position-relative">
-                                                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Refresh_icon.svg" alt="" class="avatar-xxs">
-                                                        <div class="flex-grow-1">
-                                                            <a href="#" class="stretched-link"  data-toggle="tooltip" title="<?= $search->name ?>">
-                                                                <h6 class="fs-sm text-muted text-truncate mb-0"
-
-                                                                ><?php
-                                                                    $name = substr(htmlspecialchars($search->name) , 0, 14);
-                                                                    $name .='...';
-                                                                    echo $name;
-                                                                    ?> </h6>
-                                                            </a>
-                                                            <!--<p class="text-danger fs-xs mb-0">Buy</p>-->
-                                                        </div>
-                                                        <div class="text-end flex-shrink-0">
-                                                            <h6 class="text-muted text-truncate fs-sm mb-0"><?= number_format($search->result, 0, ',', ' ');;
-                                                                ?> </h6>
-                                                            <p class="text-muted fs-xs mb-0"><?php
-                                                                //moment.locale('fr');
-
-                                                                $date = new DateTime($search->date);
-
-                                                                $formattedDate = $date->format('d F Y');
-                                                                echo $formattedDate;
-                                                                ?></p>
-                                                        </div>
-                                                    </li>
-                                                <?php } ?>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--end col-->
                             </div>
                             <!--end row-->
                         </div>

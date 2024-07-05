@@ -2153,7 +2153,7 @@ $bdd = new Bdd();
 
 
         $.ajax({
-            url: "http://156.67.25.120/api/count.php",
+            url: "https://api22.mgd-crm.com/count.php",
             type: "post",
             data:JSON.stringify(processFormData()),
             complete: function(xhr, result) {

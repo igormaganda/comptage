@@ -10,7 +10,7 @@ if(isset($_POST['top_pays']) ) {
     //$options = "<option value=''>Sélectionnez une région</option>";
 
     // Connexion à la base de données (à remplacer par vos propres informations de connexion)
-    $servername = "localhost";
+    $servername = "156.67.25.120";
     $username = "postgres";
     $password = "P057G435";
     $dbname = "datamart3";

@@ -73,46 +73,7 @@
                         </li>
 
 
-                            <li class="menu-title"><i class="ri-more-fill"></i><span>Comptage</span></li>
-
-                            <li class="nav-item">
-                                <a class="nav-link menu-link collapsed" href="#sidebarPages" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarPages">
-                                    <i class="bi bi-arrow-repeat"></i> <span>Comptage</span>
-                                </a>
-                                <div class="collapse menu-dropdown" id="sidebarPages">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link collapsed" href="#sideImport" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sideImport">
-                                                <span>Import</span>
-                                            </a>
-                                            <div class="collapse menu-dropdown" id="sideImport">
-                                                <ul class="nav nav-sm flex-column">
-                                                    <li class="nav-item">
-                                                        <a href="/<?php echo ROOT_PATH; ?>/import.php" class="nav-link" role="button">Email</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a href="/<?php echo ROOT_PATH; ?>/enrichir.php" class="nav-link" role="button">Enrichissement</a>
-                                                    </li>
-                                                   
-                                                    <li class="nav-item">
-                                                        <a href="/<?php echo ROOT_PATH; ?>/import_mobile.php" class="nav-link" role="button">Mobile</a>
-                                                    </li>
-                                                    
-                                                    <li class="nav-item">
-                                                        <a href="/<?php echo ROOT_PATH; ?>/domaine.php" class="nav-link" role="button">Split-Domaine</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#sideSearch" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sideSearch"> Recherche </a>
-                                            <div class="collapse menu-dropdown" id="sideSearch">
-                                                <ul class="nav nav-sm flex-column">
-                                                    <li class="nav-item">
-                                                        <a href="#searchBtob" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="searchBtob">B2B
-                                                        </a>
-                                                        <div class="collapse menu-dropdown" id="searchBtob">
-                                                            <ul class="nav nav-sm flex-column">
+                          
                                                                 <li class="nav-item">
                                                                     <a href="/<?php echo ROOT_PATH; ?>/search_b2b.php" class="nav-link"> Recherche
                                                                     </a>
@@ -146,57 +107,7 @@
                                         
                                     </ul>
                                 </div>
-                            </li>
-                            <li class="menu-title"><i class="ri-more-fill"></i><span>Campagnes</span></li>
-                            <li class="nav-item">
-                                <a class="nav-link menu-link collapsed" href="#sideCompagnes" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sideCompagnes">
-                                    <i class="ph-buildings-thin"></i> <span>Campagnes</span>
-                                </a>
-                                <div class="collapse menu-dropdown" id="sideCompagnes">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link collapsed" href="#sideCompagne" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sideCompagne">
-                                                <span>Campagnes</span>
-                                            </a>
-                                            <div class="collapse menu-dropdown" id="sideCompagne">
-                                                <ul class="nav nav-sm flex-column">
-                                                    <li class="nav-item">
-                                                        <a href="/<?php echo ROOT_PATH; ?>/brouillon.php" class="nav-link" role="button">Brouillons</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a href="/<?php echo ROOT_PATH; ?>/campagne.php" class="nav-link" role="button"> Créer un envoi</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a href="/<?php echo ROOT_PATH; ?>/campagne_b.php" class="nav-link" role="button"> Liste des envoies</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#sidemManagement" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidemManagement">Gestion</a>
-                                            <div class="collapse menu-dropdown" id="sidemManagement">
-                                                <ul class="nav nav-sm flex-column">
-                                                    <li class="nav-item">
-                                                        <a href="/<?php echo ROOT_PATH; ?>/partenaires.php" class="nav-link">Partenaires</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a href="/<?php echo ROOT_PATH; ?>/programmes.php" class="nav-link" >Programmes </a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a href="/<?php echo ROOT_PATH; ?>/domaines.php" class="nav-link"> Domaines </a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a href="/<?php echo ROOT_PATH; ?>/routes.php" class="nav-link"> Routes</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a href="/<?php echo ROOT_PATH; ?>/tdpf.php" class="nav-link">Volume</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a href="/<?php echo ROOT_PATH; ?>/thematiques.php" class="nav-link">Thématique</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a href="/<?php echo ROOT_PATH; ?>/assoaide.php" class="nav-link"> Partenaires (asso-aide) </a>
-                                                    </li>
+                           
                                                 </ul>
                                             </div>
                                         </li>
@@ -210,27 +121,7 @@
                                     <i class="ph-chart-bar-thin"></i> <span>Statistiques</span>
                                 </a>
                                 <div class="collapse menu-dropdown" id="sideStat">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a href="/<?php echo ROOT_PATH; ?>/presentation.php" class="nav-link" role="button"> Données </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="/<?php echo ROOT_PATH; ?>/envois.php" class="nav-link" role="button"> Envoi</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="/<?php echo ROOT_PATH; ?>/stats.php" class="nav-link" role="button">Statistiques</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="/<?php echo ROOT_PATH; ?>/ediware_cmp.php" class="nav-link" role="button"> Ediware</a>
-                                        </li>
-                                       
-                                        <li class="nav-item">
-                                            <a href="/<?php echo ROOT_PATH; ?>/statistic_nettoyage.php" class="nav-link" role="button">Nettoyage</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="/<?php echo ROOT_PATH; ?>/statistic_envoi.php" class="nav-link" role="button">Envois</a>
-                                        </li>
-                                    </ul>
+                            
                                 </div>
                             </li>
                         </ul>-->
@@ -487,29 +378,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="dropdown topbar-head-dropdown ms-2 header-item">
-                        <button type="button" class="btn btn-icon rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="rounded-circle img-fluid" src="https://img.themesbrand.com/judia/users/avatar-1.jpg" alt="Header Avatar">
-                        </button>
-                        <div class="dropdown-menu p-2 dropdown-menu-end">
-                            <div class="d-flex gap-2 mb-3 topbar-profile">
-                                <div class="position-relative">
-                                    <img class="rounded-1" src="https://img.themesbrand.com/judia/users/avatar-1.jpg" alt="Header Avatar">
-                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger"><span class="visually-hidden">unread messages</span></span>
-                                </div>
-                                <div>
-                                    <h6 class="mb-1 fs-sm user-name">Sophia Bethany</h6>
-                                    <p class="mb-0 fw-medium fs-xs"><a href="#!">sophia@judia.com</a></p>
-                                </div>
-                            </div>
-                            <a href="javascript:void(0);" class="dropdown-item"><i class="bi bi-person align-middle me-2"></i> Profile</a>
-                            <a href="javascript:void(0);" class="dropdown-item"><i class="bi bi-chat-right-text align-middle me-2"></i> Messages</a>
-                            <a href="javascript:void(0);" class="dropdown-item"><i class="bi bi-gem align-middle me-2"></i> My Subscription</a>
-                            <a href="javascript:void(0);" class="dropdown-item"><i class="bi bi-person-gear align-middle me-2"></i> Account Settings</a>
-                            <a href="auth-logout.php" class="dropdown-item"><i class="bi bi-box-arrow-right align-middle me-2"></i> Sign Out</a>
                         </div>
                     </div>
                 </div>

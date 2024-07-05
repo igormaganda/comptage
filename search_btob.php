@@ -59,7 +59,7 @@ $bdd = new Bdd();
                     <div class="page-title-box">
                         <div class="row align-items-center">
                             <div class="col-md-5">
-                                <?php includeFileWithVariables('partials/page-title.php', array('pagetitle' => 'Recherche', 'title' => 'Recherches B2C')); ?>
+                                <?php includeFileWithVariables('partials/page-title.php', array('pagetitle' => 'Recherche', 'title' => 'Recherches B2B')); ?>
                             </div>
                             <!--end col-->
                             <div class="col-md-auto ms-auto">

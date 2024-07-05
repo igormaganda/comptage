@@ -2354,7 +2354,7 @@ $bdd = new Bdd();
 
             // Requête AJAX pour les régions
             $.ajax({
-                url: '/v4/get_regions.php',
+                url: 'get_regions.php',
                 type: 'POST',
                 data: { top_pays: selectedCountries },
                 success: function(response) {
@@ -2367,11 +2367,11 @@ $bdd = new Bdd();
 
             // Requête AJAX pour les départements
             $.ajax({
-                url: '/v4/get_depart.php',
+                url: 'get_depart.php',
                 type: 'POST',
                 data: { top_pays: selectedCountries },
                 success: function(response) {
-                    console.log("dep " + response);
+                   // console.log("dep " + response);
                     updateSelect('select_multiselect_departement', response);
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
@@ -2381,11 +2381,11 @@ $bdd = new Bdd();
 
             // Requête AJAX pour les villes
             $.ajax({
-                url: '/v4/get_villes.php',
+                url: 'get_villes.php',
                 type: 'POST',
                 data: { top_pays: selectedCountries },
                 success: function(response) {
-                    console.log("villes " + response);
+                    //console.log("villes " + response);
                     updateSelect('select_multiselect_ville', response);
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
@@ -2396,73 +2396,6 @@ $bdd = new Bdd();
     });
 });
 
-    /*
-    document.addEventListener('DOMContentLoaded', function() {
-        // Fonction pour mettre à jour le <select> avec Choices.js
-        function updateSelect(selectId, response) {
-            const selectElement = document.getElementById(selectId);
-            selectElement.innerHTML = response;
-            new Choices(selectElement, {
-                removeItemButton: true,
-                placeholderValue: 'Sélectionnez',
-                allowHTML: true
-            });
-        }
-
-        // Supprimer les événements change existants
-        document.querySelectorAll('input[name="top_pays[]"]').forEach(function(checkbox) {
-            checkbox.removeEventListener('change', function() {});
-        });
-
-        // Ajouter les événements change pour récupérer les régions, départements et villes
-        document.querySelectorAll('input[name="top_pays[]"]').forEach(function(checkbox) {
-            checkbox.addEventListener('change', function() {
-                const selectedCountries = Array.from(document.querySelectorAll('input[name="top_pays[]"]:checked')).map(checked => checked.value);
-
-                // Requête AJAX pour les régions
-                $.ajax({
-                    url: '/v4/get_regions.php',
-                    type: 'POST',
-                    data: { top_pays: selectedCountries },
-                    success: function(response) {
-                        updateSelect('select_multiselect_region', response);
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        console.error("Erreur Ajax:", textStatus, errorThrown);
-                    }
-                });
-
-                // Requête AJAX pour les départements
-                $.ajax({
-                    url: '/v4/get_depart.php',
-                    type: 'POST',
-                    data: { top_pays: selectedCountries },
-                    success: function(response) {
-                        console.log("dep " + response);
-                        updateSelect('select_multiselect_departement', response);
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        console.error("Erreur Ajax:", textStatus, errorThrown);
-                    }
-                });
-
-                // Requête AJAX pour les villes
-                $.ajax({
-                    url: '/v4/get_villes.php',
-                    type: 'POST',
-                    data: { top_pays: selectedCountries },
-                    success: function(response) {
-                        console.log("villes " + response);
-                        updateSelect('select_multiselect_ville', response);
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        console.error("Erreur Ajax:", textStatus, errorThrown);
-                    }
-                });
-            });
-        });
-    });
-*/
 
     
 
@@ -2530,17 +2463,17 @@ $bdd = new Bdd();
 
 
         $.ajax({
-            url: "../api-2/count.php",
+            url: "http://156.67.25.120/api-2/count.php",
             type: "post",
             data:JSON.stringify(processFormData()),
             complete: function(xhr, result) {
 
-                console.log(JSON.stringify(processFormData()));
-                console.log(xhr.responseText);
+               // console.log(JSON.stringify(processFormData()));
+               // console.log(xhr.responseText);
                 var print = JSON.parse(xhr.responseText);
-                console.log(print)
+                //console.log(print)
                 var comptage_finale = print.total;
-                console.log(print.total);
+               // console.log(print.total);
 
                 // Initialisation du coût total des CPM
                 var cout_total = 0;
@@ -2900,7 +2833,7 @@ $bdd = new Bdd();
 
         // Récupérer le fichier sélectionné
         const file = $(this)[0].files[0];
-        console.log(file);
+       // console.log(file);
         // Ajouter le fichier au FormData
         formData2.append('input_pays', file);
         $.ajax ({
@@ -2915,7 +2848,7 @@ $bdd = new Bdd();
                     const pays = JSON.parse(response);
                     const input = $('<input type="hidden" name="input_pays" value="' + pays + '">');
                     $("#form_search_db").append(input);
-                    console.log(response)
+                    //console.log(response)
                     /*for (const ligne of pays) {
                     console.log(ligne)
                     }*/

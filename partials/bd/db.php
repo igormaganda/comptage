@@ -50,13 +50,6 @@ class Bdd {
 
         switch ($GLOBALS['env']) {
             case 0: // Windows
-                /*
-                                    $this->PARAM_hote        ='localhost';
-                                    $this->PARAM_port        ='5432';
-                                    $this->PARAM_nom_bd      ='datamart';
-                                    $this->PARAM_utilisateur ='postgres';
-                                    $this->PARAM_mot_passe   ='root';
-                */
 
                 $this->PARAM_hote        ='localhost';
                 $this->PARAM_port        ='5432';

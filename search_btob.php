@@ -2061,7 +2061,7 @@ $bdd = new Bdd();
                 type: 'POST',
                 data: { top_pays: selectedCountries },
                 success: function(response) {
-                    console.log("dep " + response);
+                    //console.log("dep " + response);
                     updateSelect('select_multiselect_departement', response);
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
@@ -2075,7 +2075,7 @@ $bdd = new Bdd();
                 type: 'POST',
                 data: { top_pays: selectedCountries },
                 success: function(response) {
-                    console.log("villes " + response);
+                   // console.log("villes " + response);
                     updateSelect('select_multiselect_ville', response);
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
@@ -2158,12 +2158,12 @@ $bdd = new Bdd();
             data:JSON.stringify(processFormData()),
             complete: function(xhr, result) {
 
-                console.log(JSON.stringify(processFormData()));
-                console.log(xhr.responseText);
+                //console.log(JSON.stringify(processFormData()));
+                //console.log(xhr.responseText);
                 var print = JSON.parse(xhr.responseText);
-                console.log(print)
+               // console.log(print)
                 var comptage_finale = print.total;
-                console.log(print.total);
+                //console.log(print.total);
 
                 // Initialisation du coût total des CPM
                 var cout_total = 0;

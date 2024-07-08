@@ -310,25 +310,7 @@ $bdd = new Bdd();
                                                         <div class="col-lg-12">
                                                             <div class="tab-pane" id="customFormsPreview" role="tabpanel" aria-labelledby="customFormsPreview-tab" tabindex="0">
                                                                 <div class="row g-3">
-                                                                    <div class="col-lg-6">
-                                                                        <div class="mt-1 mt-lg-0">
-                                                                            <p class="text-muted mb-1">Rechercher
-                                                                                une ou plusieurs régions </p>
-                                                                            <select id="multiselect_region"   multiple="multiple" name="regions[]" >
-                                                                                
-
-                                                                            </select>
-                                                                        </div>
-                                                                        <br>
-                                                                        &nbsp;
-                                                                        <input type="checkbox" class="btn-check" id="btn-check-2-outlined" checked>
-                                                                        <label class="btn btn-outline-secondary" for="btn-check-2-outlined">Tout
-                                                                            cocher</label>
-
-                                                                        <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" checked>
-                                                                        <label class="btn btn-outline-success" for="success-outlined">Tout
-                                                                            décocher</label>
-                                                                    </div>
+                                                                    
                                                                     <div class="col-lg-6">
                                                                         <div class="mt-1 mb-0 mt-lg-0">
                                                                             
@@ -400,24 +382,7 @@ $bdd = new Bdd();
                                                         <div class="col-lg-12">
                                                             <div class="tab-pane" id="customFormsPreview" role="tabpanel" aria-labelledby="customFormsPreview-tab" tabindex="0">
                                                                 <div class="row g-3">
-                                                                    <div class="col-lg-6">
-                                                                        <div class="mt-1 mt-lg-0 " >
-                                                                            <p class="text-muted mb-1">Rechercher un
-                                                                                ou plusieurs département </p>
-                                                                            <select id="multiselect_departement" multiple="multiple" name="geoloc[]" >
-
-                                                                            </select>
-                                                                        </div>
-                                                                        <br>
-                                                                        &nbsp;
-                                                                        <input type="checkbox" class="btn-check" id="btn-check-2-outlined" checked>
-                                                                        <label class="btn btn-outline-secondary" for="btn-check-2-outlined">Tout
-                                                                            cocher</label>
-
-                                                                        <input type="radio" class="btn-check" name="options-departement" id="success-outlined" checked>
-                                                                        <label class="btn btn-outline-success" for="success-outlined">Tout
-                                                                            décocher</label>
-                                                                    </div>
+                                                                   
                                                                     <div class="col-lg-6">
                                                                         <div class="mt-1 mb-0 mt-lg-0">
                                                                             <div style="margin-bottom: 10px;" id="select_container">

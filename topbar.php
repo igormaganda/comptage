@@ -71,7 +71,7 @@
                     <div id="scrollbar">
                         <ul class="navbar-nav" id="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link menu-link" href="search_btob.php">
+                                <a class="nav-link menu-link" href="index.php">
                                    <!-- <i class="ph-paint-brush-broad"></i> <span>Btob</span>-->
                                     <i class=" bx bx-group "></i> <span>Btob</span>
                                 </a>
